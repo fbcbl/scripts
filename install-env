@@ -74,5 +74,8 @@ yes_or_no "Do you want to install Source Tree?" && brew cask install sourcetree
 printf -- 'Installing Sublime Text ... \n'
 yes_or_no "Do you want to install Sublime Text?" && brew cask install sublime-text
 
+printf -- 'Installing Android Studio ... \n'
+brew cask install android-studio
+
 
 
