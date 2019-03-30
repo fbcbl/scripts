@@ -50,3 +50,6 @@ if [[ $(command -v brew) == "" ]]; then
 else
     brew update
 fi
+
+printf -- 'Installing Brew Cask ... \n'
+brew tap caskroom/cask
