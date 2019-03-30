@@ -33,3 +33,10 @@ echo "  IdentityFile ~/.ssh/id_rsa"
 
 ## Add your SSH private key to the ssh-agent and store your passphrase in the keychain.
 ssh-add -K ~/.ssh/id_rsa
+
+printf -- 'Installing/updating Homebrew ...\n'
+if [[ $(command -v brew) == "" ]]; then
+	echo -ne '\n' | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+    brew update
+fi
