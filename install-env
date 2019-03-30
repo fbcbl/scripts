@@ -1,0 +1,18 @@
+#!/bin/bash
+
+## Set git config
+echo "We are going to start by setting up your git configuration"
+
+printf -- 'Setting your git config user.name ...'
+git_user_name=$(git config --get user.name)
+while [[ -z $git_user_name ]]; do
+ 	read -p "Please enter your git username" -e git_user_name
+done
+git config --global user.name "$git_user_name"
+
+printf -- 'Setting your git config user.email ...'
+git_user_email=$(git config --get user.email)
+while [[ -z $git_user_email ]]; do
+ 	read -p "Please enter your git email" -e git_user_email
+done
+git config --global user.email "$git_user_email"
