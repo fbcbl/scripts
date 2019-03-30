@@ -71,5 +71,8 @@ brew cask install caskroom/versions/java8
 printf -- 'Installing Source Tree ... \n'
 yes_or_no "Do you want to install Source Tree?" && brew cask install sourcetree
 
+printf -- 'Installing Sublime Text ... \n'
+yes_or_no "Do you want to install Sublime Text?" && brew cask install sublime-text
+
 
 
