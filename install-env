@@ -20,6 +20,9 @@ fi
 printf -- 'Installing Brew Cask ... \n'
 brew tap caskroom/cask
 
+printf -- 'Installing git ... \n'
+brew cask install git
+
 ## Set git config
 echo "We are going to start by setting up your git configuration"
 
