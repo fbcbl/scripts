@@ -3,16 +3,33 @@
 ## Set git config
 echo "We are going to start by setting up your git configuration"
 
-printf -- 'Setting your git config user.name ...'
+printf -- 'Setting your git config user.name ...\n'
 git_user_name=$(git config --get user.name)
 while [[ -z $git_user_name ]]; do
  	read -p "Please enter your git username" -e git_user_name
 done
 git config --global user.name "$git_user_name"
 
-printf -- 'Setting your git config user.email ...'
+printf -- 'Setting your git config user.email ...\n'
 git_user_email=$(git config --get user.email)
 while [[ -z $git_user_email ]]; do
  	read -p "Please enter your git email" -e git_user_email
 done
 git config --global user.email "$git_user_email"
+
+printf -- 'Creating a new ssh key using your git email ...\n'
+ssh-keygen -t rsa -b 4096 -C "$git_user_email"
+## Start the ssh-agent in the background.
+eval "$(ssh-agent -s)"
+
+## In Mac-Os Sierra or later you will need to modify your ~/.ssh/config file to automatically 
+## load keys into the ssh-agent and store passphrases in your keychain
+{
+echo "Host *"
+echo "  AddKeysToAgent yes"
+echo "  UseKeychain yes"
+echo "  IdentityFile ~/.ssh/id_rsa" 
+} > ~/.ssh/config
+
+## Add your SSH private key to the ssh-agent and store your passphrase in the keychain.
+ssh-add -K ~/.ssh/id_rsa
