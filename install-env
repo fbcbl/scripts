@@ -63,3 +63,10 @@ yes_or_no "Do you want to install oh-my-zsh?" && \
 
 printf -- 'Installing Google Chrome ... \n'
 brew cask install google-chrome
+
+print -- 'Installing Java 8 ... \n'
+brew tap caskroom/versions
+brew cask install caskroom/versions/java8
+
+
+
