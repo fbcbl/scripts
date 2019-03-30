@@ -77,5 +77,9 @@ yes_or_no "Do you want to install Sublime Text?" && brew cask install sublime-te
 printf -- 'Installing Android Studio ... \n'
 brew cask install android-studio
 
+printf -- 'Installing Slack ... \n'
+yes_or_no "Do you want to install Slack?" && brew cask install slack
+
+
 
 
