@@ -58,6 +58,8 @@ echo "  IdentityFile ~/.ssh/id_rsa"
 ssh-add -K ~/.ssh/id_rsa
 
 
+printf -- 'Installing wget ... \n'
+brew install wget
 
 printf -- 'Installing iTerm2 ... \n'
 yes_or_no "Do you want to install iTerm2?" && brew cask install iterm2
