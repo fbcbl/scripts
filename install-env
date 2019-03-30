@@ -10,6 +10,16 @@ function yes_or_no {
     done
 }
 
+printf -- 'Installing/updating Homebrew ...\n'
+if [[ $(command -v brew) == "" ]]; then
+	echo -ne '\n' | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+    brew update
+fi
+
+printf -- 'Installing Brew Cask ... \n'
+brew tap caskroom/cask
+
 ## Set git config
 echo "We are going to start by setting up your git configuration"
 
@@ -44,15 +54,7 @@ echo "  IdentityFile ~/.ssh/id_rsa"
 ## Add your SSH private key to the ssh-agent and store your passphrase in the keychain.
 ssh-add -K ~/.ssh/id_rsa
 
-printf -- 'Installing/updating Homebrew ...\n'
-if [[ $(command -v brew) == "" ]]; then
-	echo -ne '\n' | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-else
-    brew update
-fi
 
-printf -- 'Installing Brew Cask ... \n'
-brew tap caskroom/cask
 
 printf -- 'Installing iTerm2 ... \n'
 yes_or_no "Do you want to install iTerm2?" && brew cask install iterm2
