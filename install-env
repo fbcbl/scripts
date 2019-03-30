@@ -53,3 +53,6 @@ fi
 
 printf -- 'Installing Brew Cask ... \n'
 brew tap caskroom/cask
+
+printf -- 'Installing iTerm2 ... \n'
+yes_or_no "Do you want to install iTerm2?" && brew cask install iterm2
