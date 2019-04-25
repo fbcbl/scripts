@@ -20,3 +20,9 @@ This script will try to install the following dependencies on your environment:
 - oh-my-zsh (optional)
 
 In addition it will try to setup a correct git configuration by asking your name and email, and create a private SSH key so that you don't have to authenticate everytime.
+
+## screenshot
+
+This script will make use of `adb` to take a screenshot of your connected phone and then it will resize it to 480x800 (so that the generated screenshot is not to big to use in PR descriptions.)
+
+To run it just do `./screenshot`

@@ -1,0 +1,12 @@
+#!/bin/bash
+# this script will take a screenshot of your current screen and size it smaller 
+# so that they take an acceptable size on PR descriptions.
+
+# To use it run ./screenshot
+screenshot_output_file="screen_`date +%Y_%m_%d_%H_%M_%S`.png"
+
+adb shell screencap -p /sdcard/screen.png
+adb pull /sdcard/screen.png $screenshot_output_file
+adb shell rm /sdcard/screen.png
+
+convert $screenshot_output_file -resize 480x800\> $screenshot_output_file
