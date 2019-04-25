@@ -1,0 +1,97 @@
+#!/bin/bash
+
+function yes_or_no {
+    while true; do
+        read -p "$* [y/n]: " yn
+        case $yn in
+            [Yy]*) return 0  ;;  
+            [Nn]*) echo "Aborted" ; return  1 ;;
+        esac
+    done
+}
+
+printf -- 'Installing/updating Homebrew ...\n'
+if [[ $(command -v brew) == "" ]]; then
+	echo -ne '\n' | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+    brew update
+fi
+
+printf -- 'Installing Brew Cask ... \n'
+brew tap caskroom/cask
+
+printf -- 'Installing git ... \n'
+brew install git
+
+## Set git config
+echo "We are going to start by setting up your git configuration"
+
+printf -- 'Setting your git config user.name ...\n'
+git_user_name=$(git config --get user.name)
+while [[ -z $git_user_name ]]; do
+ 	read -p "Please enter your git username" -e git_user_name
+done
+git config --global user.name "$git_user_name"
+
+printf -- 'Setting your git config user.email ...\n'
+git_user_email=$(git config --get user.email)
+while [[ -z $git_user_email ]]; do
+ 	read -p "Please enter your git email" -e git_user_email
+done
+git config --global user.email "$git_user_email"
+
+printf -- 'Creating a new ssh key using your git email ...\n'
+ssh-keygen -t rsa -b 4096 -C "$git_user_email"
+## Start the ssh-agent in the background.
+eval "$(ssh-agent -s)"
+
+# In Mac-Os Sierra or later you will need to modify your ~/.ssh/config file to automatically 
+# load keys into the ssh-agent and store passphrases in your keychain
+{
+echo "Host *"
+echo "  AddKeysToAgent yes"
+echo "  UseKeychain yes"
+echo "  IdentityFile ~/.ssh/id_rsa" 
+} > ~/.ssh/config
+
+# Add your SSH private key to the ssh-agent and store your passphrase in the keychain.
+ssh-add -K ~/.ssh/id_rsa
+
+printf -- 'Installing wget ... \n'
+brew install wget
+
+printf -- 'Installing iTerm2 ... \n'
+yes_or_no "Do you want to install iTerm2?" && brew cask install iterm2
+
+printf -- 'Installing oh-my-zsh \n'
+yes_or_no "Do you want to install oh-my-zsh?" && \
+ 	brew install zsh; sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+printf -- 'Installing Google Chrome ... \n'
+brew cask install google-chrome
+
+printf -- 'Installing Java 8 ... \n'
+brew tap caskroom/versions
+brew cask install java8
+
+printf -- 'Installing Source Tree ... \n'
+yes_or_no "Do you want to install Source Tree?" && brew cask install sourcetree
+
+printf -- 'Installing Sublime Text ... \n'
+yes_or_no "Do you want to install Sublime Text?" && brew cask install sublime-text
+
+printf -- 'Installing Android Studio ... \n'
+brew cask install android-studio
+
+printf -- 'Installing Slack ... \n'
+yes_or_no "Do you want to install Slack?" && brew cask install slack
+
+printf -- 'Installing adb-anim ...\n'
+brew tap horowitz/adbanim
+brew install adb-anim
+
+printf -- 'Installing ktlint ... \n'
+curl -sSLO https://github.com/shyiko/ktlint/releases/download/0.24.0/ktlint && \
+ 	 chmod a+x ktlint && \
+ 	 sudo mv ktlint /usr/local/bin/
+
