@@ -21,7 +21,7 @@ printf -- 'Installing Brew Cask ... \n'
 brew tap caskroom/cask
 
 printf -- 'Installing git ... \n'
-brew cask install git
+brew install git
 
 ## Set git config
 echo "We are going to start by setting up your git configuration"
@@ -45,8 +45,8 @@ ssh-keygen -t rsa -b 4096 -C "$git_user_email"
 ## Start the ssh-agent in the background.
 eval "$(ssh-agent -s)"
 
-## In Mac-Os Sierra or later you will need to modify your ~/.ssh/config file to automatically 
-## load keys into the ssh-agent and store passphrases in your keychain
+# In Mac-Os Sierra or later you will need to modify your ~/.ssh/config file to automatically 
+# load keys into the ssh-agent and store passphrases in your keychain
 {
 echo "Host *"
 echo "  AddKeysToAgent yes"
@@ -54,9 +54,8 @@ echo "  UseKeychain yes"
 echo "  IdentityFile ~/.ssh/id_rsa" 
 } > ~/.ssh/config
 
-## Add your SSH private key to the ssh-agent and store your passphrase in the keychain.
+# Add your SSH private key to the ssh-agent and store your passphrase in the keychain.
 ssh-add -K ~/.ssh/id_rsa
-
 
 printf -- 'Installing wget ... \n'
 brew install wget
@@ -71,9 +70,9 @@ yes_or_no "Do you want to install oh-my-zsh?" && \
 printf -- 'Installing Google Chrome ... \n'
 brew cask install google-chrome
 
-print -- 'Installing Java 8 ... \n'
+printf -- 'Installing Java 8 ... \n'
 brew tap caskroom/versions
-brew cask install caskroom/versions/java8
+brew cask install java8
 
 printf -- 'Installing Source Tree ... \n'
 yes_or_no "Do you want to install Source Tree?" && brew cask install sourcetree
@@ -91,7 +90,4 @@ printf -- 'Installing ktlint ... \n'
 curl -sSLO https://github.com/shyiko/ktlint/releases/download/0.24.0/ktlint && \
  	 chmod a+x ktlint && \
  	 sudo mv ktlint /usr/local/bin/
-
-ktlint --apply-to-idea-project --android
-
 
