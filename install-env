@@ -86,6 +86,10 @@ brew cask install android-studio
 printf -- 'Installing Slack ... \n'
 yes_or_no "Do you want to install Slack?" && brew cask install slack
 
+printf -- 'Installing adb-anim ...\n'
+brew tap horowitz/adbanim
+brew install adb-anim
+
 printf -- 'Installing ktlint ... \n'
 curl -sSLO https://github.com/shyiko/ktlint/releases/download/0.24.0/ktlint && \
  	 chmod a+x ktlint && \

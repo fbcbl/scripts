@@ -12,6 +12,7 @@ This script will try to install the following dependencies on your environment:
 - Google Chrome
 - ktlint
 - git
+- [adb-anim](https://medium.com/@danielhorowitzz/adb-anim-a-homebrew-tap-for-toggling-android-animations-69864c65f9a5)
 
 - Slack (optional)
 - Source Tree (optional)
