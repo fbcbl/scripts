@@ -26,3 +26,12 @@ In addition it will try to setup a correct git configuration by asking your name
 This script will make use of `adb` to take a screenshot of your connected phone and then it will resize it to 480x800 (so that the generated screenshot is not to big to use in PR descriptions.)
 
 To run it just do `./screenshot`
+
+## layoutb 
+
+This script will enabled/disable the layout bounds on your phone. It takes one parameter that represents if it is enabled (`true`) or disabled (`false`)
+
+Example:
+
+- To enable `./layoutb true`
+- To disable `./layoutb false`
