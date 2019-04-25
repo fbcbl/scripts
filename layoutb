@@ -1,0 +1,9 @@
+#!/bin/bash
+# This script will enabled/disable the layout bounds on your phone.
+# This script takes one parameter that represents if it is enabled (`true`) or disabled (`false`)
+# Example:
+# To enable `./layoutb true`
+# To disable `./layoutb false`
+
+adb shell setprop debug.layout $1
+adb shell service call activity 1599295570 > /dev/null
