@@ -74,8 +74,8 @@ printf -- 'Installing Google Chrome ... \n'
 brew cask install google-chrome
 
 printf -- 'Installing Java 8 ... \n'
-brew tap caskroom/versions
-brew cask install java8
+brew tap adoptopenjdk/openjdk
+brew cask install adoptopenjdk8
 
 printf -- 'Installing Source Tree ... \n'
 yes_or_no "Do you want to install Source Tree?" && brew cask install sourcetree
