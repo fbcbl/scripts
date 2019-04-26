@@ -66,10 +66,6 @@ brew install wget
 printf -- 'Installing iTerm2 ... \n'
 yes_or_no "Do you want to install iTerm2?" && brew cask install iterm2
 
-printf -- 'Installing oh-my-zsh \n'
-yes_or_no "Do you want to install oh-my-zsh?" && \
- 	brew install zsh; sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
 printf -- 'Installing Google Chrome ... \n'
 brew cask install google-chrome
 
@@ -103,4 +99,8 @@ printf -- 'Installing ktlint ... \n'
 curl -sSLO https://github.com/shyiko/ktlint/releases/download/0.24.0/ktlint && \
  	 chmod a+x ktlint && \
  	 sudo mv ktlint /usr/local/bin/
+
+printf -- 'Installing oh-my-zsh \n'
+yes_or_no "Do you want to install oh-my-zsh?" && \
+	brew install zsh; sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
