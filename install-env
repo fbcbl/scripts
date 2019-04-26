@@ -11,6 +11,9 @@ function yes_or_no {
 }
 
 printf -- 'Installing/updating Homebrew ...\n'
+
+sudo chown -R $(whoami) $(brew --prefix)/*
+
 if [[ $(command -v brew) == "" ]]; then
 	echo -ne '\n' | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
