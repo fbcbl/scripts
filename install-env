@@ -11,6 +11,9 @@ function yes_or_no {
 }
 
 printf -- 'Installing/updating Homebrew ...\n'
+
+sudo chown -R $(whoami) $(brew --prefix)/*
+
 if [[ $(command -v brew) == "" ]]; then
 	echo -ne '\n' | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
@@ -63,16 +66,12 @@ brew install wget
 printf -- 'Installing iTerm2 ... \n'
 yes_or_no "Do you want to install iTerm2?" && brew cask install iterm2
 
-printf -- 'Installing oh-my-zsh \n'
-yes_or_no "Do you want to install oh-my-zsh?" && \
- 	brew install zsh; sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
 printf -- 'Installing Google Chrome ... \n'
 brew cask install google-chrome
 
 printf -- 'Installing Java 8 ... \n'
-brew tap caskroom/versions
-brew cask install java8
+brew tap adoptopenjdk/openjdk
+brew cask install adoptopenjdk8
 
 printf -- 'Installing Source Tree ... \n'
 yes_or_no "Do you want to install Source Tree?" && brew cask install sourcetree
@@ -86,6 +85,12 @@ brew cask install android-studio
 printf -- 'Installing Slack ... \n'
 yes_or_no "Do you want to install Slack?" && brew cask install slack
 
+printf -- 'Installing Zeplin ... \n'
+yes_or_no "Do you want to install Slack?" && brew cask install zeplin
+
+printf -- 'Installing Spotify ... \n'
+yes_or_no "Do you want to install Spotify?" && brew cask install spotify
+
 printf -- 'Installing adb-anim ...\n'
 brew tap horowitz/adbanim
 brew install adb-anim
@@ -94,4 +99,8 @@ printf -- 'Installing ktlint ... \n'
 curl -sSLO https://github.com/shyiko/ktlint/releases/download/0.24.0/ktlint && \
  	 chmod a+x ktlint && \
  	 sudo mv ktlint /usr/local/bin/
+
+printf -- 'Installing oh-my-zsh \n'
+yes_or_no "Do you want to install oh-my-zsh?" && \
+	brew install zsh; sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
