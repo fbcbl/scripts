@@ -91,6 +91,9 @@ yes_or_no "Do you want to install Slack?" && brew cask install zeplin
 printf -- 'Installing Spotify ... \n'
 yes_or_no "Do you want to install Spotify?" && brew cask install spotify
 
+printf -- 'Installing Spectacle ... \n'
+yes_or_no "Do you want to install Spectacle?" && brew cask install spectacle
+
 printf -- 'Installing adb-anim ...\n'
 brew tap horowitz/adbanim
 brew install adb-anim

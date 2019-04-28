@@ -20,6 +20,7 @@ This script will try to install the following dependencies on your environment:
 - oh-my-zsh (optional)
 - Zeplin (optional)
 - Spotify (optional) - one only codes focused with music
+- [Spectacle](https://www.spectacleapp.com/) (optional)
 
 In addition it will try to setup a correct git configuration by asking your name and email, and create a private SSH key so that you don't have to authenticate everytime.
 
