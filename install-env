@@ -73,6 +73,12 @@ printf -- 'Installing Java 8 ... \n'
 brew tap adoptopenjdk/openjdk
 brew cask install adoptopenjdk8
 
+printf -- 'Installing Image Magick ... \n'
+brew install imagemagick
+
+printf -- 'Installing pidcat ... \n'
+brew install pidcat
+
 printf -- 'Installing Source Tree ... \n'
 yes_or_no "Do you want to install Source Tree?" && brew cask install sourcetree
 
